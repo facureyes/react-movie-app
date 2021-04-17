@@ -1,6 +1,16 @@
 .RatingFilter{
-    width: 100%;
+    width: 80%;
     text-align: center;
+    margin: auto;
     color: white;
-    height: 2rem;
+
+}
+
+.RatingFilter .rating-star {
+    padding: 10px 15px;
+}
+
+.RatingFilter h5 {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(87, 87, 87);
 }

@@ -8,7 +8,7 @@ import Aux from './hoc/AuxHoc';
 
 function MoviesApp() {
   const [rating, setRating] = useState(0);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {

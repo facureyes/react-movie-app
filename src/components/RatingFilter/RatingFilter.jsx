@@ -6,12 +6,15 @@ const RatingFilter = (props) => {
     const ratings = [2, 4, 6, 8, 10];
     return (
         <div className="RatingFilter">
-            {console.log(ratings, props.rating)}
+            <h5>Filter by rating:</h5>
+            <div>
             {ratings.map((el)=>{
                 return (
-                            <i onClick={()=> {props.clicked(el)}} class={`fa fa-star${props.rating < el ? "-o" : ""}`} aria-hidden="true" style={{'color':'yellow'}}></i>
+                            <i onClick={()=> {props.clicked(el)}} class={`fa fa-star${props.rating < el ? "-o" : ""} rating-star`} aria-hidden="true" style={{'color':'yellow'}}></i>
                         )
             })}
+            </div>
+            
         </div>
     );
 }

@@ -1,0 +1,13 @@
+.MovieGrid {
+    padding: 1.5rem 0;
+    width:80%;
+}
+
+.MovieGrid h1 {
+    color: #CCC;
+    text-align: center;
+    font-size: 4rem;
+    display: block;
+    width: 100%;
+    margin-top: 10%;
+}
