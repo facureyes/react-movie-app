@@ -1,5 +1,58 @@
 .Movie {
-    margin: 1rem !important;
-    padding: 1rem !important;
+    /* margin: 1rem !important; */
+    margin: 1rem 0 !important;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 15px;
 }
 
+.Movie .card-title {
+    position: absolute;
+    bottom: 0px;
+    padding: 0.7rem 1.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.Movie .card-title-background {
+    position: absolute;
+    bottom: 0px;
+    margin: 0;
+    background: rgb(3,3,3);
+    background: linear-gradient(0deg, rgba(3,3,3,1) 0%, rgba(0,0,0,1) 40%, rgba(204,204,204,0) 100%);
+    opacity: 0.8;
+    height: 50%;
+    width: 100%;
+}
+
+.Movie .card-button {
+    font-family: 'Poppins', sans-serif;
+    color: whitesmoke;
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.Movie:hover .card-title {
+    /* top: 0px; */
+    opacity: 0;
+    padding: 0rem 1.5rem;
+    transition: 0.3s;
+}
+
+.Movie:hover .card-title-background {
+    height: 150%;
+    background: rgb(3,3,3);
+    background: linear-gradient(0deg, rgba(3,3,3,1) 0%, rgba(0,0,0,1) 70%, rgba(204,204,204,0) 100%);
+    transition:0.6s;
+    overflow: hidden; 
+}
+
+.Movie:hover .card-button {
+    opacity: 1;
+    top: 45%;
+    transition: 0.6s;
+}
