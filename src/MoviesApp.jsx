@@ -31,7 +31,7 @@ function MoviesApp() {
       setRating(0);
       query= `https://api.themoviedb.org/3/discover/movie?api_key=8fa4d18f25de3243e9c147cf34f534f2&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=1`;
     } else {
-      query=`https://api.themoviedb.org/3/search/movie?api_key=8fa4d18f25de3243e9c147cf34f534f2&language=en-US&query=${input}&page=1&sort_by=popularity.desc`
+      query=`https://api.themoviedb.org/3/search/movie?api_key=8fa4d18f25de3243e9c147cf34f534f2&language=en-US&query=${encodeURIComponent(input)}&page=1&sort_by=popularity.desc`
     }
 
     axios.get(query).then(res => {
