@@ -15,7 +15,7 @@ const MovieGrid = props => {
             {movies.length === 0 ? <h1>No movies were found :(</h1> : 
             movies.map((movie, idx) => (
                 <Col xl={3} lg={4} md={6} sm={12}>
-                    <Movie movie={movie} key={idx} />
+                    <Movie movie={movie} key={idx} handleModal={props.onClick}/>
                 </Col>
             ))}
             </Row>
