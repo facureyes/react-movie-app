@@ -1,3 +1,20 @@
+# Steps to run the app
+
+1. Clone the repo
+
+    `git clone https://github.com/facureyes/react-movie-app.git`
+
+2. Go to project folder and install dependencies
+
+    `cd react-movie-app && npm i`
+
+3. Run the app in development mode
+
+    `npm run start`
+
+4. Go to your preferred web browser and Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
 # React Coding Challenge
 The goal of this coding challenge is to give you an opportunity to showcase your knowledge and show us how you work on a real-life project.
 We are intentionally not forcing you to use any particular library (other than React) so you don't have to learn something new just for a code challenge, but please take into account that even when we are not expecting a production ready app we do expect you to be able to explain why you picked those dependencies for the job.
