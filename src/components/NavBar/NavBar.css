@@ -16,12 +16,14 @@
     background: -webkit-linear-gradient(rgb(255, 162, 56), rgb(252, 248, 16));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    cursor: pointer;
 }
 
 .NavBar img {
     vertical-align: top;
     width: 5rem;
     height: 5rem;
+    cursor: pointer;
 }
 
 .NavBar div {

@@ -11,10 +11,14 @@ const CustomNavBar = props => {
         event.preventDefault();
     }
 
+    const resetSearch = ()=>{
+        props.onSearch("");
+    }
+
     return (
         <nav className="NavBar">
-            <img src={logo} alt="Brand Logo" />
-            <h1>movies.</h1> 
+            <img src={logo} alt="Brand Logo" onClick={resetSearch}/>
+            <h1 onClick={resetSearch}>movies.</h1> 
 
             <div>
                 <input type="text" placeholder="Search a movie..." value={props.searchTerm} autoFocus={true} onChange={handleInput}></input>
