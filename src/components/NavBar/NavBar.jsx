@@ -5,12 +5,9 @@ import './NavBar.css'
 
 const CustomNavBar = props => {
 
-    const [input, setInput] = useState("");
-
     const handleInput = event => {
         const inp = event.target.value;
-        setInput(inp);
-        props.search(inp);
+        props.onSearch(inp);
         event.preventDefault();
     }
 
@@ -20,7 +17,7 @@ const CustomNavBar = props => {
             <h1>movies.</h1> 
 
             <div>
-                <input type="text" placeholder="Search a movie..." value={input} autoFocus={true} onChange={handleInput}></input>
+                <input type="text" placeholder="Search a movie..." value={props.searchTerm} autoFocus={true} onChange={handleInput}></input>
             </div>
         </nav>
     );

@@ -10,11 +10,12 @@ import Aux from './hoc/AuxHoc';
 function MoviesApp() {
   const [rating, setRating] = useState(0);
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [modal, setModal] = useState({
     visible: false,
     data: {}
   });
-  // const [searchTerm, setSearchTerm] = useState("");
+  
 
   useEffect(() => {
     handleMoviesSearch();
@@ -25,7 +26,9 @@ function MoviesApp() {
   // Need to protect API Key before uploading - Not doing so in this prototype
   const handleMoviesSearch = input => {
     let query;
+    setSearchTerm(input === undefined ? "" : input);
     if(input === undefined || input === ""){
+      setRating(0);
       query= `https://api.themoviedb.org/3/discover/movie?api_key=8fa4d18f25de3243e9c147cf34f534f2&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=1`;
     } else {
       query=`https://api.themoviedb.org/3/search/movie?api_key=8fa4d18f25de3243e9c147cf34f534f2&language=en-US&query=${input}&page=1&sort_by=popularity.desc`
@@ -79,21 +82,12 @@ const closeModal = () => {
 
   return (
     <Aux>
-      <NavBar search={handleMoviesSearch}/>
-      <Modal
-        visible={modal.visible}
-        close={closeModal}
-        effect="fadeInUp"
-        movie={modal.data}
-      >
-      {/* <h1>Title</h1> */}
-        {/* <div>
-            <h1>{modal.data.title}</h1>
-            <p>Some Contents</p>
-            <a href="javascript:void(0);" onClick={() => closeModal()}>Close</a>
-        </div> */}
-      </Modal>
-      <RatingFilter clicked={handleRating} rating={rating}/>
+      <NavBar onSearch={handleMoviesSearch} searchTerm={searchTerm} />
+      <Modal visible={modal.visible} close={closeModal} movie={modal.data} > </Modal>
+      { searchTerm.length !== 0 ?
+        <RatingFilter clicked={handleRating} rating={rating}/>
+        : <h1 className="title">Most popular movies</h1>
+      }
       <MovieGrid movies={movies} rating={rating} onClick={openModal}/>
       {/* <Footer /> */}
     </Aux>
