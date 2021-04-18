@@ -8,8 +8,8 @@ const Movie = (props) => {
         <div className="Movie" onClick={()=>{props.handleModal(props.movie)}}>
             <Card className="bg-dark text-white border-0" >
                 { props.movie.poster_path ? 
-                    <img src={"https://image.tmdb.org/t/p/w342/" + props.movie.poster_path} />
-                    : <img src={defaultPoster} />
+                    <img alt={props.movie.title + "Poster"} src={"https://image.tmdb.org/t/p/w342/" + props.movie.poster_path} />
+                    : <img alt={props.movie.title + "Poster"} src={defaultPoster} />
                 }
                 <div className="card-title-background"></div>
                 <div className="card-title">
