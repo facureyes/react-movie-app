@@ -20,7 +20,7 @@ const CustomNavBar = props => {
             <h1>movies.</h1> 
 
             <div>
-                <input type="text" placeholder="Search a movie..." value={input} autoFocus="true" onChange={handleInput}></input>
+                <input type="text" placeholder="Search a movie..." value={input} autoFocus={true} onChange={handleInput}></input>
             </div>
         </nav>
     );
