@@ -24,8 +24,14 @@
     border-radius: 15px;
     font-family: 'Poppins', sans-serif;
     color: whitesmoke;
-    overflow: hidden;
+    overflow-wrap: normal;
+    overflow: auto;
     max-width: 1280px;
+    -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+}
+.modal-box::-webkit-scrollbar {
+    display: none;
 }
 
 .modal-background {
@@ -36,7 +42,7 @@
     background: rgb(3,3,3);
     background: linear-gradient(180deg, rgba(3,3,3,1) 0%, rgba(0,0,0,0.5) 70%, rgba(204,204,204,0) 100%);
     opacity: 0.9;
-    height: 50%;
+    height: 80%;
     width: 100%;
 }
 
@@ -46,11 +52,39 @@
     bottom: 0px;
     background:transparent;
     border:transparent;
-    top: -50%;
+    top: -80%;
 }
 
 .modal-info {
     padding-right: 15px;
+
     display: inline;
     width:fit-content;
+}
+
+.modal-genres {
+    display: flex;
+}
+
+.modal-specs {
+    margin-bottom: 1rem;
+}
+
+.modal-genre {
+    font-size: 0.6rem;
+    padding: 0.25rem;
+    margin-right: 1rem;
+    letter-spacing: 1px;
+    border: 1px solid whitesmoke;
+    font-weight: 400;
+}
+
+.modal-title {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .modal-box{
+        width: 90%;
+    }
 }
