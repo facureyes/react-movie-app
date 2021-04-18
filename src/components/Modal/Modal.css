@@ -1,0 +1,56 @@
+.Modal {
+    /* fixed position will always show modal in the top left corner */
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* z-index to show modal even if it is used before some other elements */
+    z-index: 5;
+    /* make modal fill whole window */
+    width: 100vw;
+    height: 100vh;
+    /* add some background to blur content behind modal */
+    background: rgba(20, 20, 20, 0.8);
+  
+    /* center content inside modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.modal-box{
+    width: 70%;
+    height: 70%;
+    background-color: #111;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    color: whitesmoke;
+    overflow: hidden;
+    max-width: 1280px;
+}
+
+.modal-background {
+    border-radius: 15px;
+    position: relative;
+    bottom: 0px;
+    margin: 0;
+    background: rgb(3,3,3);
+    background: linear-gradient(180deg, rgba(3,3,3,1) 0%, rgba(0,0,0,0.5) 70%, rgba(204,204,204,0) 100%);
+    opacity: 0.9;
+    height: 50%;
+    width: 100%;
+}
+
+.modal-box .modal-content {
+    padding: 2rem;
+    position: relative;
+    bottom: 0px;
+    background:transparent;
+    border:transparent;
+    top: -50%;
+}
+
+.modal-info {
+    padding-right: 15px;
+    display: inline;
+    width:fit-content;
+}
