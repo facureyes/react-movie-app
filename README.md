@@ -1,3 +1,7 @@
+# Take a look at it!
+
+- App available in GitHub pages: [Movies App](https://facureyes.github.io/react-movie-app/)
+
 # Steps to run the app
 
 1. Clone the repo
@@ -13,7 +17,6 @@
     `npm run start`
 
 4. Go to your preferred web browser and Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 
 # React Coding Challenge
 The goal of this coding challenge is to give you an opportunity to showcase your knowledge and show us how you work on a real-life project.
