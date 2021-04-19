@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import './Movie.css'
-import defaultPoster from './default_poster.png'
+import defaultPoster from '../../../assets/default_poster.png'
 
 const Movie = (props) => {
     return (
