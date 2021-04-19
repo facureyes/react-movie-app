@@ -25,7 +25,6 @@ const useMovieSearch = () => {
         if (res.request.status === 200){ 
             const m = res.data.results; 
             setMovies(m);
-            console.log(m);
         } else {
             setMovies([]);
         }
