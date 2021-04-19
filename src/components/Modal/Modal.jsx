@@ -14,7 +14,8 @@ const Modal = props => {
     return ( 
         props.visible ? createPortal(
             <div className="Modal" onClick={props.close}>
-                <div className="modal-box" style={{'backgroundImage':`url(https://image.tmdb.org/t/p/w1280${props.movie.backdrop_path})`}}>
+            {console.log(process.env.API_BACKDROP_URL + props.movie.backdrop_path)}
+                <div className="modal-box" style={{'backgroundImage':`url(${process.env.REACT_APP_API_BACKDROP_URL + props.movie.backdrop_path})`}}>
                     <div className="modal-background"></div>
                     <div className="modal-content">
                         <h1 className="modal-title">{props.movie.title.toUpperCase()}</h1>

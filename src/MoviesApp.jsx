@@ -23,15 +23,14 @@ function MoviesApp() {
 
   // If this page will be running on a server I will need to add a configure call to the api to
   // get escential things such as base URL for images and images sizes instead of hardcoding it
-  // Need to protect API Key before uploading - Not doing so in this prototype
   const handleMoviesSearch = input => {
     let query;
     setSearchTerm(input === undefined ? "" : input);
     if(input === undefined || input === ""){
       setRating(0);
-      query= `https://api.themoviedb.org/3/discover/movie?api_key=8fa4d18f25de3243e9c147cf34f534f2&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=1`;
+      query= `${process.env.REACT_APP_API_BASE_URL}discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=1`;
     } else {
-      query=`https://api.themoviedb.org/3/search/movie?api_key=8fa4d18f25de3243e9c147cf34f534f2&language=en-US&query=${encodeURIComponent(input)}&page=1&sort_by=popularity.desc`
+      query=`${process.env.REACT_APP_API_BASE_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${encodeURIComponent(input)}&page=1&sort_by=popularity.desc`
     }
 
     axios.get(query).then(res => {
@@ -56,7 +55,7 @@ function MoviesApp() {
   };
 
   const openModal = mov => {
-    let query = `https://api.themoviedb.org/3/movie/${mov.id}?api_key=8fa4d18f25de3243e9c147cf34f534f2&language=en-US`;
+    let query = `${process.env.REACT_APP_API_BASE_URL}movie/${mov.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
     
     axios.get(query).then(res => {
       if (res.request.status === 200){ 
