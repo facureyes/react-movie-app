@@ -1,4 +1,3 @@
-import React from 'react';
 import Movie from '../Movie/Movie';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -12,12 +11,12 @@ const MovieGrid = props => {
     return (
         <Container fluid className="MovieGrid">
             <Row>
-            {movies.length === 0 ? <h1>No movies were found :(</h1> : 
-            movies.map((movie, idx) => (
-                <Col xl={3} lg={4} md={6} sm={12}>
-                    <Movie movie={movie} key={idx} handleModal={props.onClick}/>
-                </Col>
-            ))}
+                {movies.length === 0 ? <h1>No movies were found :(</h1> 
+                : movies.map((movie, idx) => (
+                    <Col xl={3} lg={4} md={6} sm={12}>
+                        <Movie movie={movie} key={idx} handleModal={props.onClick}/>
+                    </Col>
+                ))}
             </Row>
         </Container>
     );
