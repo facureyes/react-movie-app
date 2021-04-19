@@ -21,6 +21,7 @@ function MoviesApp() {
   
   useEffect(() => {
     if(searchTerm.length === 0) { handleRatingFilter(0); }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[searchTerm]);
 
   return (

@@ -14,30 +14,31 @@ const Modal = props => {
     return ( 
         props.visible ? createPortal(
             <div className="Modal" onClick={props.close}>
-            {console.log(process.env.API_BACKDROP_URL + props.movie.backdrop_path)}
                 <div className="modal-box" style={{'backgroundImage':`url(${process.env.REACT_APP_API_BACKDROP_URL + props.movie.backdrop_path})`}}>
                     <div className="modal-background"></div>
                     <div className="modal-content">
+
                         <h1 className="modal-title">{props.movie.title.toUpperCase()}</h1>
+
                         <div className="modal-genres">
-                            {props.movie.genres.map(el => {
-                                return <h6 className="modal-genre">{el.name}</h6>
+                            {props.movie.genres.map((el, idx) => {
+                                return <h6 key={idx} className="modal-genre">{el.name}</h6>
                             })}
                         </div>
 
                         <div className="modal-specs">
                             {props.movie.release_date.search(/\d{4}/) !== -1?
                                 <h6 className="modal-info">
-                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                    <i className="fa fa-calendar-o" aria-hidden="true"></i>
                                     {" " + props.movie.release_date.match(/\d{4}/)[0]}
                                 </h6>
                                 : null}
                             <h6 className="modal-info">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <i className="fa fa-clock-o" aria-hidden="true"></i>
                                 {" " + convertMinsToHrsMins(parseInt(props.movie.runtime)) }
                             </h6>
                             <h6 className="modal-info">
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                <i className="fa fa-star-o" aria-hidden="true"></i>
                                 {" " + props.movie.vote_average}
                             </h6>
                             
@@ -45,10 +46,7 @@ const Modal = props => {
                         
                         <h4>{props.movie.tagline}</h4>
                         <p>{props.movie.overview}</p>
-                        
-                        
                     </div>
-                    
                 </div>
             </div>,
             document.body, )
