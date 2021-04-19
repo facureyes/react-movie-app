@@ -1,94 +1,38 @@
-import {React, useState, useEffect} from 'react'
-import './MoviesApp.css';
+import {React, useEffect} from 'react'
+
 import MovieGrid from './components/MovieGrid/MovieGrid';
 import NavBar from './components/NavBar/NavBar'
 import RatingFilter from './components/RatingFilter/RatingFilter'
 import Modal from './components/Modal/Modal';
-import axios from 'axios';
 import Aux from './hoc/AuxHoc';
 
+import useMovieSearch from './hooks/useMovieSearch'
+import useRatingFilter from './hooks/useRatingFilter'
+import useMovieModal from './hooks/useMovieModal'
+
+import './MoviesApp.css';
+
+
 function MoviesApp() {
-  const [rating, setRating] = useState(0);
-  const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [modal, setModal] = useState({
-    visible: false,
-    data: {}
-  });
+
+  const [movies, searchTerm, handleMoviesSearch] = useMovieSearch();
+  const [rating, handleRatingFilter, getFilteredMovies] = useRatingFilter();
+  const [modal, openModal, closeModal] = useMovieModal();
   
-
   useEffect(() => {
-    handleMoviesSearch();
-  }, []);
-
-  // If this page will be running on a server I will need to add a configure call to the api to
-  // get escential things such as base URL for images and images sizes instead of hardcoding it
-  const handleMoviesSearch = input => {
-    let query;
-    setSearchTerm(input === undefined ? "" : input);
-    if(input === undefined || input === ""){
-      setRating(0);
-      query= `${process.env.REACT_APP_API_BASE_URL}discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=1`;
-    } else {
-      query=`${process.env.REACT_APP_API_BASE_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${encodeURIComponent(input)}&page=1&sort_by=popularity.desc`
-    }
-
-    axios.get(query).then(res => {
-      if (res.request.status === 200){ 
-        const m = res.data.results; 
-        setMovies(m);
-        console.log(m);
-      } else {
-        setMovies([]);
-      }
-    });
-  };
-
-  const handleRating = rating => {
-    setRating((prevStatus)=>{
-      if(rating === prevStatus) {
-        return 0;
-      } else {
-        return rating;
-      }
-    });
-  };
-
-  const openModal = mov => {
-    let query = `${process.env.REACT_APP_API_BASE_URL}movie/${mov.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
-    
-    axios.get(query).then(res => {
-      if (res.request.status === 200){ 
-        const newModal = {
-          visible: true,
-          data: {...res.data}
-        };
-        console.log(res);
-        setModal(newModal);
-      } else {
-        const newModal = {
-          visible: true,
-          data: {...mov}
-        };
-        setModal(newModal);
-      }
-    });
-  }
-
-const closeModal = () => {
-  setModal(prevStatus => ({...prevStatus, visible: false}));
-}
+    if(searchTerm.length === 0) { handleRatingFilter(0); }
+  },[searchTerm]);
 
   return (
     <Aux>
       <NavBar onSearch={handleMoviesSearch} searchTerm={searchTerm} />
-      <Modal visible={modal.visible} close={closeModal} movie={modal.data} > </Modal>
       { searchTerm.length !== 0 ?
-        <RatingFilter clicked={handleRating} rating={rating}/>
+        <RatingFilter clicked={handleRatingFilter} rating={rating}/>
         : <h1 className="title">Most popular movies</h1>
       }
-      <MovieGrid movies={movies} rating={rating} onClick={openModal}/>
+      <MovieGrid movies={getFilteredMovies(movies)} onClick={openModal}/>
       {/* <Footer /> */}
+      <Modal visible={modal.visible} close={closeModal} movie={modal.data} />
     </Aux>
     
   );
