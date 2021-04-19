@@ -2,7 +2,7 @@
 
 - App available in GitHub pages: [Movies App](https://facureyes.github.io/react-movie-app/)
 
-# Steps to run the app
+# Steps to run the app locally
 
 1. Clone the repo
 
